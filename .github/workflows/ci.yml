@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    uses: spice-framework/.github/.github/workflows/go-verify.yml@130369b5162d2ae38084485f6639e75f2b6e382f
+    with:
+      go-version: 1.26.5
+
+  quality:
+    name: Repository quality contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+      - name: Set up exact Go toolchain
+        uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
+        with:
+          go-version: 1.26.5
+          cache-dependency-path: |
+            go.sum
+            tools/go.sum
+      - name: Run complete local quality contract
+        run: go run ./internal/qualitygate -mode=verify
+
+  mysql:
+    name: MySQL 8.4.11 integration
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      mysql:
+        image: mysql@sha256:b3b90af2a6552ae30c266fdb7d5dd55f3afb72404bb78d37fe8a23eb857fd3fb
+        env:
+          MYSQL_DATABASE: spice
+          MYSQL_USER: spice
+          MYSQL_PASSWORD: spice-test
+          MYSQL_ROOT_PASSWORD: spice-root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd "mysqladmin ping -h 127.0.0.1 -pspice-root"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Set up exact Go toolchain
+        uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
+        with:
+          go-version: 1.26.5
+          cache-dependency-path: go.sum
+      - name: Download the explicit starter graph
+        run: go mod download
+      - name: Exercise real MySQL behavior
+        env:
+          SPICE_MYSQL_TEST_URL: mysql://spice:spice-test@127.0.0.1:3306/spice?tls=disable
+        run: go test -tags=integration -race -shuffle=on -count=1 ./...
