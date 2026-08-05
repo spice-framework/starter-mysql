@@ -1,4 +1,4 @@
-.PHONY: check fmt integration verify
+.PHONY: check fmt integration verify verify-release
 
 check:
 	go run ./internal/qualitygate -mode=check
@@ -12,3 +12,5 @@ integration:
 verify:
 	go run ./internal/qualitygate -mode=verify
 
+verify-release:
+	go run ./internal/qualitygate -mode=verify-release

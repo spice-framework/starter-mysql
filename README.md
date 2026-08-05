@@ -40,6 +40,7 @@ Go 1.26.5 is mandatory:
 ```text
 make check
 make verify
+make verify-release
 ```
 
 The normal verifier checks formatting, module/vendor reproducibility, vet,
@@ -66,3 +67,9 @@ migration backend. Applications own explicit resumable migration plans.
 
 See [the dependency review](docs/dependency-review.md) and
 [support contract](docs/support.md) before production adoption.
+
+## Releases
+
+The repository builds deterministic source-only releases with an SPDX 2.3
+SBOM, SHA-256 checksums, and Ed25519 signatures. See the exact artifact and
+clean-tag ceremony in [the release guide](docs/releasing.md).
