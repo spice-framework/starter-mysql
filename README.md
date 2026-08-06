@@ -39,6 +39,7 @@ Go 1.26.5 is mandatory:
 
 ```text
 make check
+make compatibility
 make release-parity
 make verify
 make verify-release
@@ -47,6 +48,12 @@ make verify-release
 The normal verifier checks formatting, module/vendor reproducibility, vet,
 allowlisted lint and nil safety, gosec, govulncheck, shuffled race tests, at
 least 85% product coverage, and offline vendor builds.
+
+Core compatibility exercises the distinct minimum and current exact versions
+in `spice-compatibility.json`. The minimum must equal the direct Spice
+requirement in `go.mod`; temporary alternate module files keep both checks from
+rewriting `go.mod`, `go.sum`, or `vendor`. `make verify` runs both compatibility
+lines before the repository quality gate, and hosted CI runs them independently.
 
 Release parity runs the exact `spice-dev` tool authorized by `go.mod` and the
 retained repository builder twice each, entirely from `vendor` with network and
@@ -81,6 +88,9 @@ See [the dependency review](docs/dependency-review.md) and
 The repository builds deterministic source-only releases with an SPDX 2.3
 SBOM, SHA-256 checksums, and Ed25519 signatures. See the exact artifact and
 clean-tag ceremony in [the release guide](docs/releasing.md).
+The reviewed public trust anchor is committed with fingerprint
+`db149fbb7d7f20ee2379eb41504202069f9f431df16e22bf84d6561719e0a9d1`;
+no signed release is implied until the protected release ceremony completes.
 The retained repository builder and signed production workflow remain the
 release authority while the centrally rendered unsigned candidate is held to
 the dual-builder parity contract.
