@@ -5,6 +5,17 @@ filippo.io/edwards25519/field
 # github.com/go-sql-driver/mysql v1.10.0
 ## explicit; go 1.24.0
 github.com/go-sql-driver/mysql
+# github.com/spice-framework/development v0.0.0-20260806034648-1856466df09d
+## explicit; go 1.26.0
+github.com/spice-framework/development/cmd/spice-dev
+github.com/spice-framework/development/internal/bootstrap
+github.com/spice-framework/development/internal/catalog
+github.com/spice-framework/development/internal/cli
+github.com/spice-framework/development/internal/librarypolicy
+github.com/spice-framework/development/internal/libraryrelease
+github.com/spice-framework/development/internal/process
+github.com/spice-framework/development/internal/verify
+github.com/spice-framework/development/internal/workspace
 # github.com/spice-framework/spice v0.0.0-20260805185924-ee45e0aa386e
 ## explicit; go 1.26.0
 github.com/spice-framework/spice/annotation
