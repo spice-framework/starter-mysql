@@ -11,8 +11,8 @@ require (
 
 require (
 	filippo.io/edwards25519 v1.2.0 // indirect
-	github.com/spice-framework/development v0.0.0-20260806121906-963bb6676069 // indirect
-	github.com/spice-framework/toolchain v0.0.0-20260806054457-a83d9b58034c // indirect
+	github.com/spice-framework/development v0.0.0-20260806132124-4c308d1b9fda // indirect
+	github.com/spice-framework/toolchain v0.0.0-20260806133530-71211498297c // indirect
 	golang.org/x/mod v0.38.0 // indirect
 )
 
