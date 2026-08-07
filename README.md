@@ -1,5 +1,7 @@
 # Spice MySQL starter
 
+Unified documentation: [spiceframework.dev/integrations/mysql](https://spiceframework.dev/integrations/mysql/).
+
 `github.com/spice-framework/starter-mysql` is the independently versioned,
 opt-in MySQL integration for Spice. It creates secure, instance-owned
 `database/sql` pools with the maintained go-sql-driver/mysql driver. Importing
