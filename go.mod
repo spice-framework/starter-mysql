@@ -6,7 +6,7 @@ toolchain go1.26.5
 
 require (
 	github.com/go-sql-driver/mysql v1.10.0
-	github.com/spice-framework/spice v0.0.0-20260805222830-a2ecd56df246
+	github.com/spice-framework/spice v0.1.0-preview.1
 )
 
 require (
