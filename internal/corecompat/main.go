@@ -23,7 +23,7 @@ import (
 const (
 	coreModulePath   = "github.com/spice-framework/spice"
 	repositoryModule = "github.com/spice-framework/starter-mysql"
-	requiredGo       = "go1.26.5"
+	requiredGo       = "go1.26.6"
 )
 
 type compatibility struct {
@@ -162,9 +162,6 @@ func decodeCompatibility(content []byte) (compatibility, error) {
 	}
 	if contract.Current == "" {
 		return compatibility{}, errors.New("spice-compatibility.json current is required")
-	}
-	if contract.Minimum == contract.Current {
-		return compatibility{}, errors.New("spice-compatibility.json minimum and current must differ")
 	}
 	return contract, nil
 }

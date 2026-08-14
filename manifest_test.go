@@ -39,7 +39,7 @@ func TestManifestDeclaresStandaloneReviewedStarter(t *testing.T) {
 		}) {
 		t.Fatalf("entrypoints=%#v dependencies=%#v", spec.Activation.EntryPoints, spec.Dependencies)
 	}
-	if err := manifest.Compatible(spicestarter.APIVersion, "go1.26.5"); err != nil {
+	if err := manifest.Compatible(spicestarter.APIVersion, "go1.26.6"); err != nil {
 		t.Fatalf("Compatible() error = %v", err)
 	}
 	content, err := manifest.JSON()

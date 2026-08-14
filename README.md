@@ -37,7 +37,7 @@ commit recorded in [support metadata](docs/support.md).
 
 ## Verify
 
-Go 1.26.5 is mandatory:
+Go 1.26.6 is mandatory:
 
 ```text
 make check

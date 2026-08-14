@@ -4,7 +4,7 @@ This repository owns the independently versioned MySQL integration for
 Spice. Work directly on local `main` in bounded commits. Fetch before editing
 and immediately before pushing; never overwrite unexpected remote work.
 
-Go 1.26.5 is mandatory. Every product change must preserve secure connection
+Go 1.26.6 is mandatory. Every product change must preserve secure connection
 defaults, caller-owned contexts and pools, transaction semantics, deterministic
 migration/outbox/batch behavior, and public core-contract isolation. Add
 positive and failure-path tests, update public documentation, run `make verify`

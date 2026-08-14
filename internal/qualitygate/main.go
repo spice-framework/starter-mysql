@@ -22,7 +22,7 @@ import (
 )
 
 const (
-	requiredGoVersion = "go1.26.5"
+	requiredGoVersion = "go1.26.6"
 	modulePath        = "github.com/spice-framework/starter-mysql"
 	minimumCoverage   = 85.0
 )

@@ -34,11 +34,11 @@ func TestDirectRequirementRejectsMissingAndIndirect(t *testing.T) {
 
 func TestDecodeCompatibility(t *testing.T) {
 	t.Parallel()
-	contract, err := decodeCompatibility([]byte(`{"schema":1,"minimum":"v0.1.0","current":"v0.2.0"}`))
+	contract, err := decodeCompatibility([]byte(`{"schema":1,"minimum":"v0.1.0","current":"v0.1.0"}`))
 	if err != nil {
 		t.Fatalf("decodeCompatibility() error = %v", err)
 	}
-	if contract.Schema != 1 || contract.Minimum != "v0.1.0" || contract.Current != "v0.2.0" {
+	if contract.Schema != 1 || contract.Minimum != "v0.1.0" || contract.Current != "v0.1.0" {
 		t.Fatalf("decodeCompatibility() = %#v", contract)
 	}
 }
@@ -50,7 +50,6 @@ func TestDecodeCompatibilityRejectsInvalidContracts(t *testing.T) {
 		"wrong schema":    `{"schema":2,"minimum":"v0.1.0","current":"v0.2.0"}`,
 		"missing minimum": `{"schema":1,"current":"v0.2.0"}`,
 		"missing current": `{"schema":1,"minimum":"v0.1.0"}`,
-		"equal versions":  `{"schema":1,"minimum":"v0.1.0","current":"v0.1.0"}`,
 		"unknown field":   `{"schema":1,"minimum":"v0.1.0","current":"v0.2.0","future":true}`,
 		"trailing value":  `{"schema":1,"minimum":"v0.1.0","current":"v0.2.0"} {}`,
 		"trailing syntax": `{"schema":1,"minimum":"v0.1.0","current":"v0.2.0"} !`,

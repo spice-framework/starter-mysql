@@ -2,7 +2,7 @@
 
 | Contract | Current development support |
 |---|---|
-| Go | Exactly 1.26.5 for development and release verification |
+| Go | Exactly 1.26.6 for development and release verification |
 | Spice minimum/current | Exact versions in [`spice-compatibility.json`](../spice-compatibility.json) |
 | MySQL | 8.4.11 real-system acceptance; versions supported by go-sql-driver/mysql v1.10.0 remain integration targets, not yet release claims |
 | Operating systems | Windows, Linux, and macOS; Linux container acceptance |

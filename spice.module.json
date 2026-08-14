@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "kind": "starter",
+  "name": "mysql",
+  "module": "github.com/spice-framework/starter-mysql",
+  "spiceCompatibility": {
+    "minimum": "v0.1.0-preview.4.0.20260814014712-5f535e696300",
+    "current": "v0.1.0-preview.4.0.20260814014712-5f535e696300"
+  },
+  "capabilities": [
+    "data.mysql",
+    "data.sql"
+  ],
+  "autoConfigurationPackages": [
+    "github.com/spice-framework/starter-mysql"
+  ],
+  "compilerTools": [
+    "github.com/spice-framework/toolchain"
+  ],
+  "publicPackages": [
+    "github.com/spice-framework/starter-mysql"
+  ],
+  "documentation": [
+    "README.md"
+  ]
+}
